@@ -1,2 +1,4 @@
-PyGithub==1.45
-slackclient==2.5.0
+PyGithub
+slackclient
+python-dotenv
+python-dotenv
