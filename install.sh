@@ -1,16 +1,21 @@
 #!/usr/bin/env bash
 
+# Some Virtual ENV constants
+VENV_LOCATION="$HOME/venv/pullit"
+PYTHON_LOCATION="$(which python)"
+
+
 ########################
 # Create a virutal env #
 ########################
 function create_env() {
-    LOCATION="~/venv/pullit"
-    if [[ -d "$LOCATION" ]]; then
-        echo "Activating $LOCATION/bin/activate"
-        $(source $LOCATION/bin/activate)
+    if [[ -f "$VENV_LOCATION/bin/activate" ]]; then
+        echo "Activating $VENV_LOCATION/bin/activate"
+        source $VENV_LOCATION/bin/activate
     else
-        echo "Creating $LOCATION environment"
-        $(virtualenv $LOCATION)
+        echo "Creating $VENV_LOCATION environment"
+        virtualenv "$VENV_LOCATION"
+        source $VENV_LOCATION/bin/activate
     fi
 }
 
@@ -18,9 +23,9 @@ function create_env() {
 # Exit a virutal env   #
 ########################
 function exit_env() {
-    EXISTS="$(which deactivate)"
-    if [[ -e $EXISTS ]]; then
-        $(deactivate) > /dev/null
+    if [[ ! $PYTHON_LOCATION == *'pullit'* ]] && [[ ! $PYTHON_LOCATION == *'usr'* ]]; then
+        echo "Cleaning up your environment..."
+        deactivate > /dev/null
     fi
 }
 
@@ -28,23 +33,15 @@ function exit_env() {
 # Install requirements #
 ########################
 function install() {
-    $(pip install requirements)
+    echo "Installing requirements..."
+    pip install -r requirements.txt
 }
 
 ########################
 # Run installation     #
 ########################
 function main() {
-
-    echo "Cleaning up your environment..."
-    exit_env
-
-    echo "Creating a virtual environment..."
-    create_env
-
-    echo "Installing requirements..."
-    install
-
+    exit_env; create_env; install
     echo "You're good to go. Run pullit (./pullit.py)"
 }
 

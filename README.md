@@ -6,7 +6,7 @@ Pullit is a real-time credential finder.
 
 - ``` git pull https://github.com/filtration/pullit.git ```
 - ``` sudo chmod +x install.sh  ```
-- ``` ./install.sh ```
+- ``` . ./install.sh ```
 - ``` python ./pullit.py  ```
 
 
