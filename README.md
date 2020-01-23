@@ -15,3 +15,15 @@ Pullit is a real-time credential finder.
 - Github
 - Bitbucket (todo)
 - Gitlab (todo)
+
+
+### todo:
+
+- Config file, have structure like so:
+    
+```
+    name: 'Twitter Api Key'
+    matches: 'twitter_api_key'
+    regex: 'twitter_api_key=(.*?)'
+    selector: 1 
+```
