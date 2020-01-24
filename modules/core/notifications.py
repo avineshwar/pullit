@@ -11,5 +11,6 @@ class Notifications:
 
     # Send information to slack
     def slack(self, payload):
-        print("Sent to slack", payload)
+        pass
+        #print("Sent to slack", payload)
 
