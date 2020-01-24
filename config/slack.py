@@ -1,4 +1,4 @@
-import os
+from modules.core.config import *
 
 
 class Slack:
@@ -6,5 +6,5 @@ class Slack:
     # Return the slack token
     @staticmethod
     def token():
-        return os.getenv('SLACK_API')
+        return config['SLACK_API']
 
