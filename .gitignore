@@ -2,3 +2,4 @@ config.yml
 .idea
 modules/core/__pycache__
 config/__pycache__
+modules/github/__pycache__
