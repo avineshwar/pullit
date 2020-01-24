@@ -9,6 +9,16 @@ THREADS: 100
 SLACK_API: ''
 
 ######################
+# SMTP information
+######################
+SMTP:
+    port: 8000
+    username: johndoe
+    host: myhost.com
+    password: 1234
+    tls: true
+
+######################
 # Github api tokens
 ######################
 GITHUB_TOKENS:
