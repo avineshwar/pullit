@@ -10,6 +10,6 @@ class Notifications:
         Events.listen(Events, 'filename-found', self.slack)
 
     # Send information to slack
-    def slack(self, message):
-        print("Sent to slack", message)
+    def slack(self, payload):
+        print("Sent to slack", payload)
 
