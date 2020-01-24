@@ -48,8 +48,9 @@ class Pullit:
     def main(self):
         # Pool connections to speed up our job
         with Pool(processes=Threads.get()) as pool:
-            function = partial(self.find)
-            pool.map(function, list(self.auth.get_repos()[:Threads.get()]))
+            while True:
+                function = partial(self.find)
+                pool.map(function, list(self.auth.get_repos()[:Threads.get()]))
 
 
 # Pullit logo

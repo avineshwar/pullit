@@ -21,8 +21,20 @@ Pullit is a real-time credential finder.
 
 ### todo:
 
+
 - Check rate limiting
 - Slack notifications
 - Email notifications
-- Save to sqlite file
+- Save to sqlite file for example: <br>
+    1. repos:
+        - id
+        - repo_name (name of the repo)
+        - scanned_at (when we last scanned it)
+        - commit_id (id of the commit so we don't scan again)
+    2. credentials:
+        - id
+        - repo_id (repo we scanned and found creds)
+        - match (what metadata was used)
+        - name (name of the metadata)
+        - credentials (json object of the credentials/location)
 - more metadata to search for
