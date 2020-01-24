@@ -1,4 +1,5 @@
-import sys
+#!/usr/bin/env python3
+
 from modules.github.authenticate import Authenticate
 from modules.core.git import Git
 from config.metadata import Metadata
