@@ -5,9 +5,11 @@ class Notifications:
 
     # Notifications constructor
     def __init__(self):
-        pass
+        Events.listen(Events, 'regex-found', self.slack)
+        Events.listen(Events, 'extension-found', self.slack)
+        Events.listen(Events, 'filename-found', self.slack)
 
-    # Emit
-    def broadcast(self):
-        #Events.listen('slack')
+    # Send information to slack
+    def slack(self):
+        print("Sent to slack")
 

@@ -1,13 +1,19 @@
 class Events:
 
+    # Listeners subscribed
+    subscribers = {}
+
     # Events constructor
     def __init__(self):
         pass
 
-    # Emit an event
-    def emit(self, event):
-        pass
+    # Listen for event
+    @staticmethod
+    def listen(self, name, handler):
+        self.subscribers[name] = handler
 
-    # Listen for an event
-    def listen(self, event):
-        pass
+    # Emit an event
+    @staticmethod
+    def emit(self, name):
+        self.subscribers[name]()
+

@@ -2,6 +2,7 @@ from modules.github.authenticate import Authenticate
 from modules.core.git import Git
 from config.metadata import Metadata
 from modules.core.file import File
+from modules.core.boot import Boot
 
 logo = f"""
 {'#' * 60}
@@ -17,18 +18,30 @@ logo = f"""
 print(logo)
 
 
-def main():
-    a = Authenticate().get()
-    for repo in a.get_repos():
+class Pullit:
 
-        # Clone the repo
-        Git.clone(repo.full_name, "https://github.com/%s.git" % repo.full_name)
+    # Pullit constructor
+    def __init__(self):
+        self.auth = Authenticate().get()
 
-        # Run the metadata on the repo
-        for metadata in Metadata.get():
-            if metadata['type'] == 'contents':
-                File(repo).find_by_content(metadata['match'])
-            elif metadata['type'] == 'extension':
-                File(repo).find_by_extension(metadata['match'])
-            elif metadata['type'] == 'filename':
-                File(repo).find_by_name(metadata['match'])
+    # Run pullit
+    def main(self):
+
+        # Loop through repos and find matches
+        for repo in self.auth.get_repos():
+
+            # Clone the repo
+            Git.clone(repo.full_name, "https://github.com/%s.git" % repo.full_name)
+
+            # Run the metadata on the repo
+            for metadata in Metadata.get():
+                if metadata['type'] == 'contents':
+                    File(repo).find_by_content(metadata['match'])
+                elif metadata['type'] == 'extension':
+                    File(repo).find_by_extension(metadata['match'])
+                elif metadata['type'] == 'filename':
+                    File(repo).find_by_name(metadata['match'])
+
+
+pullit = Pullit()
+pullit.main()
