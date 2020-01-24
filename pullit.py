@@ -2,6 +2,7 @@ from modules.github.authenticate import Authenticate
 from modules.core.git import Git
 from config.metadata import Metadata
 from modules.core.file import File
+from modules.core.boot import Boot
 
 logo = f"""
 {'#' * 60}
@@ -46,6 +47,9 @@ class Pullit:
 
 # Pullit logo
 print(logo)
+
+# Boot method (LEAVE ALONE)
+Boot()
 
 # Let's go!
 Pullit().main()
