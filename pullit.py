@@ -2,7 +2,6 @@ from modules.github.authenticate import Authenticate
 from modules.core.git import Git
 from config.metadata import Metadata
 from modules.core.file import File
-from modules.core.boot import Boot
 
 logo = f"""
 {'#' * 60}
@@ -12,10 +11,8 @@ logo = f"""
 # I take no responsibility for what you do with this tool  #
 # It is more than likely illegal to use in your country    #
 #                                                          #
-
 {'#' * 60}
 """
-print(logo)
 
 
 class Pullit:
@@ -25,6 +22,7 @@ class Pullit:
         self.auth = Authenticate().get()
 
     # Run pullit
+    # todo: threading
     def main(self):
 
         # Loop through repos and find matches
@@ -46,5 +44,9 @@ class Pullit:
             Git.delete(repo.full_name)
 
 
-pullit = Pullit()
-pullit.main()
+# Pullit logo
+print(logo)
+
+# Let's go!
+Pullit().main()
+
