@@ -38,3 +38,4 @@ Pullit is a real-time credential finder.
         - name (name of the metadata)
         - credentials (json object of the credentials/location)
 - more metadata to search for
+- maybe if credentials are found, keep a local copy of the repo???
