@@ -26,10 +26,9 @@ for repo in a.get_repos():
     Git.clone(repo.full_name, "https://github.com/%s.git" % repo.full_name)
 
     # Run the metadata on the repo
-    # todo: move each type in to own function in file class
     for metadata in Metadata.get():
         if metadata['type'] == 'contents':
-            print('match regex for all files')
+            File(repo).find_by_content(metadata['match'])
         elif metadata['type'] == 'extension':
             File(repo).find_by_extension(metadata['match'])
         elif metadata['type'] == 'filename':
