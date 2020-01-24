@@ -14,6 +14,6 @@ class Events:
 
     # Emit an event
     @staticmethod
-    def emit(self, name):
-        self.subscribers[name]()
+    def emit(self, name, message):
+        self.subscribers[name](message)
 

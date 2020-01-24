@@ -42,6 +42,9 @@ class Pullit:
                 elif metadata['type'] == 'filename':
                     File(repo).find_by_name(metadata['match'])
 
+            # Delete the repo
+            Git.delete(repo.full_name)
+
 
 pullit = Pullit()
 pullit.main()

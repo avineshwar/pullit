@@ -6,9 +6,10 @@ class Git:
     # Clone a git repo
     @staticmethod
     def clone(name, url):
-        os.system("git clone --single-branch --no-tags --depth 1 %s /tmp/pullit/git/%s" % (url, name))
+        os.system("git clone --single-branch --no-tags --depth 1 %s /tmp/pullit/git/%s > /dev/null" % (url, name))
 
     # Delete the repo
-    def delete(self, name):
-        pass
+    @staticmethod
+    def delete(name):
+        os.system("rm -rf /tmp/pullit/git/%s" % name)
 
