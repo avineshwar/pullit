@@ -19,8 +19,8 @@ Pullit is a real-time credential finder.
 
 ### todo:
 
+- Check rate limiting
 - Slack notifications
 - Email notifications
 - Save to sqlite file
-- write regex for contents
 - more metadata to search for
