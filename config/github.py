@@ -1,4 +1,4 @@
-import os
+from modules.core.config import *
 
 
 class Github:
@@ -6,7 +6,5 @@ class Github:
     # Github config constructor
     @staticmethod
     def tokens():
-        t = list(os.getenv('GITHUB_TOKENS'))
-        print(t)
-        return os.getenv('GITHUB_TOKENS')
+        return config['GITHUB_TOKENS'][0]
 

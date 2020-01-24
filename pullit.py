@@ -1,6 +1,7 @@
-import modules.core.boot
+import sys, glob
 from modules.github.authenticate import Authenticate
-
+from modules.core.git import Git
+from config.metadata import Metadata
 logo = f"""
 {'#' * 60}
 #                                                          #
@@ -12,14 +13,18 @@ logo = f"""
 
 {'#' * 60}
 """
-
-
 print(logo)
 
 
-l = ["223"]
-print(l[0])
 a = Authenticate().get()
 
 for repo in a.get_repos():
-    print(repo.name)
+
+    Metadata.get()
+
+    Git.clone(repo.full_name, "https://github.com/%s.git" % repo.full_name)
+
+    for file in glob.glob("/tmp/pullit/git/%s/*.txt" % repo.full_name, recursive=True):
+        print(file)
+
+    sys.exit(1)

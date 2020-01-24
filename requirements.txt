@@ -1,4 +1,3 @@
 PyGithub
 slackclient
-python-dotenv
-python-dotenv
+ruamel.yaml
