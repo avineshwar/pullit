@@ -20,11 +20,19 @@ a = Authenticate().get()
 
 for repo in a.get_repos():
 
-    print(Metadata.get())
-
+    # Clone the repo
     Git.clone(repo.full_name, "https://github.com/%s.git" % repo.full_name)
 
-    for file in glob.glob("/tmp/pullit/git/%s/*.txt" % repo.full_name, recursive=True):
-        print(file)
+    # Run the metadata on the repo
+    # todo: move each type in to own function in file class
+    for metadata in Metadata.get():
+        if metadata['type'] == 'contents':
+            print('match regex for all files')
+        elif metadata['type'] == 'extension':
+            for file in glob.glob("/tmp/pullit/git/%s/*%s" % (repo.full_name, metadata['match']), recursive=True):
+                print(file)
+        elif metadata['type'] == 'filename':
+            for file in glob.glob("/tmp/pullit/git/%s/%s" % (repo.full_name, metadata['match']), recursive=True):
+                print(file)
 
     sys.exit(1)

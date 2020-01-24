@@ -8,4 +8,44 @@ SLACK_API: ''
 ######################
 GITHUB_TOKENS:
   - "1234"
-  - "56789"
+  - "1234"
+
+######################
+# File whitelists etc
+######################
+FILE_BLACKLIST:
+  - .txt
+
+######################
+# metadata to find
+######################
+METADATA:
+    # Find .txt files for debug
+    -   name: '.txt File'
+        type: 'extension'
+        match: '.txt'
+
+    # Find API.txt files for debug
+    -   name: 'api.txt File'
+        type: 'filename'
+        match: 'api.txt'
+
+    # Find .env files
+    -   name: '.env File'
+        type: 'extension'
+        match: '.env'
+
+    # Find .conf files
+    -   name: '.conf File'
+        type: 'extension'
+        match: '.conf'
+
+    # Find twitter api key
+    -   name: 'Twitter Api Key'
+        type: 'contents'
+        regex: 'twitter_api_key=(.*?)'
+
+    # Find twitter api secret
+    -   name: 'Twitter Api Secret'
+        type: 'contents'
+        regex: 'twitter_api_secret=(.*?)'
