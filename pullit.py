@@ -2,6 +2,8 @@ import sys, glob
 from modules.github.authenticate import Authenticate
 from modules.core.git import Git
 from config.metadata import Metadata
+from modules.core.file import File
+
 logo = f"""
 {'#' * 60}
 #                                                          #
@@ -29,10 +31,8 @@ for repo in a.get_repos():
         if metadata['type'] == 'contents':
             print('match regex for all files')
         elif metadata['type'] == 'extension':
-            for file in glob.glob("/tmp/pullit/git/%s/*%s" % (repo.full_name, metadata['match']), recursive=True):
-                print(file)
+            File(repo).find_by_extension(metadata['match'])
         elif metadata['type'] == 'filename':
-            for file in glob.glob("/tmp/pullit/git/%s/%s" % (repo.full_name, metadata['match']), recursive=True):
-                print(file)
+            File(repo).find_by_name(metadata['match'])
 
     sys.exit(1)
