@@ -2,6 +2,8 @@
 
 Pullit is a real-time credential finder. 
 
+<img src="https://i.imgur.com/yartJ8d.png">
+
 ### Installation
 
 - ``` git pull https://github.com/filtration/pullit.git ```
