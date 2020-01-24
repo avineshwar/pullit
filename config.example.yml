@@ -24,11 +24,6 @@ FILE_BLACKLIST:
 ######################
 # metadata to find
 ######################
-    # Find .txt files for debug
-    -   name: '.txt File'
-        type: 'extension'
-        match: '.txt'
-
     # Find API.txt files for debug
     -   name: 'api.txt File'
         type: 'filename'
@@ -53,6 +48,14 @@ FILE_BLACKLIST:
         type: 'contents'
         match: 'twitter_api_key="(.*?)"'
 
+    -   name: 'Twitter Api Key'
+        type: 'contents'
+        match: 'twitterapikey="(.*?)"'
+
+    -   name: 'Twitter Api Key'
+        type: 'contents'
+        match: 'twitterapikey=(.*?)'
+
     # Find twitter api secret
     -   name: 'Twitter Api Secret'
         type: 'contents'
@@ -61,3 +64,11 @@ FILE_BLACKLIST:
     -   name: 'Twitter Api Secret'
         type: 'contents'
         match: 'twitter_api_secret="(.*?)"'
+
+    -   name: 'Twitter Api Secret'
+        type: 'contents'
+        match: 'twitterapisecret="(.*?)"'
+
+    -   name: 'Twitter Api Secret'
+        type: 'contents'
+        match: 'twitterapisecret=(.*?)'
