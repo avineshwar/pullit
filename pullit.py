@@ -1,4 +1,3 @@
-import sys, glob
 from modules.github.authenticate import Authenticate
 from modules.core.git import Git
 from config.metadata import Metadata
@@ -18,20 +17,18 @@ logo = f"""
 print(logo)
 
 
-a = Authenticate().get()
+def main():
+    a = Authenticate().get()
+    for repo in a.get_repos():
 
-for repo in a.get_repos():
+        # Clone the repo
+        Git.clone(repo.full_name, "https://github.com/%s.git" % repo.full_name)
 
-    # Clone the repo
-    Git.clone(repo.full_name, "https://github.com/%s.git" % repo.full_name)
-
-    # Run the metadata on the repo
-    for metadata in Metadata.get():
-        if metadata['type'] == 'contents':
-            File(repo).find_by_content(metadata['match'])
-        elif metadata['type'] == 'extension':
-            File(repo).find_by_extension(metadata['match'])
-        elif metadata['type'] == 'filename':
-            File(repo).find_by_name(metadata['match'])
-
-    sys.exit(1)
+        # Run the metadata on the repo
+        for metadata in Metadata.get():
+            if metadata['type'] == 'contents':
+                File(repo).find_by_content(metadata['match'])
+            elif metadata['type'] == 'extension':
+                File(repo).find_by_extension(metadata['match'])
+            elif metadata['type'] == 'filename':
+                File(repo).find_by_name(metadata['match'])

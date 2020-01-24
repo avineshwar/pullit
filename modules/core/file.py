@@ -14,7 +14,7 @@ class File:
                 try:
                     for line in f:
                         for found in re.finditer(pattern, line):
-                            print(found)
+                            print("File: %s contains: %s" % (file, found.string))
                 except UnicodeDecodeError:
                     return
 
