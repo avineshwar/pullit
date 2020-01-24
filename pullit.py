@@ -20,7 +20,7 @@ a = Authenticate().get()
 
 for repo in a.get_repos():
 
-    Metadata.get()
+    print(Metadata.get())
 
     Git.clone(repo.full_name, "https://github.com/%s.git" % repo.full_name)
 
